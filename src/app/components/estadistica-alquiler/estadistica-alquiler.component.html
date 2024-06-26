@@ -1,0 +1,19 @@
+<!-- Contenedor principal -->
+<div class="container">
+  <!-- Fila justificada en el centro -->
+  <div class="row justify-content-center">
+    <!-- Columnas justificada en el centro -->
+    <div class="col text-center">
+      <!-- Titulo de la pagina -->
+      <h2 class="mb-4">Cantidad de alquileres</h2>
+
+      <!-- Lista que muestra datos -->
+      <ul class="list-unstyled">
+        <li *ngFor="let rental of rentalsPerDay" class="mb-3">
+          <strong>{{ rental.periodo }}:</strong>
+          {{ rental.cantidad_Alquileres }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

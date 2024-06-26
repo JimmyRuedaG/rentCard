@@ -1,0 +1,91 @@
+<!-- Contenedor Principal -->
+<div class="container">
+  <!-- Filtros y botones de filtros -->
+  <div class="row mt-3 mb-4">
+    <!-- Formulario para filtros -->
+    <form (submit)="applyFilter()">
+      <!-- Fila de los filtros y botones -->
+      <div class="row">
+        <!-- Columna fecha inicio -->
+        <div class="col col-lg-2">
+          <label for="startDate">Fecha de inicio:</label>
+          <input
+            type="date"
+            id="startDate"
+            name="startDate"
+            class="form-control"
+            [(ngModel)]="startDate"
+          />
+        </div>
+        <!-- Columna fecha fin -->
+        <div class="col col-lg-2">
+          <label for="endDate">Fecha de fin:</label>
+          <input
+            type="date"
+            id="endDate"
+            name="endDate"
+            class="form-control"
+            [(ngModel)]="endDate"
+          />
+        </div>
+        <!-- Boton aplicar filtro -->
+        <div class="col col-lg-2">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="margin-top: 20px"
+          >
+            Aplicar filtro
+          </button>
+        </div>
+        <!-- Boton limpiar filtro -->
+        <div class="col col-lg-2">
+          <button
+            type="button"
+            class="btn btn-danger ml-2"
+            style="margin-top: 20px"
+            (click)="clearFilter()"
+          >
+            Borrar filtro
+          </button>
+        </div>
+        <!-- Mensaje error fecha -->
+        <div *ngIf="errorFecha" class="alert alert-danger mt-3">
+          {{ errorFecha }}
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- tabla -->
+  <div class="row mt-3">
+    <!-- Clase que se le aplicara a la tabla -->
+    <table class="table table-striped">
+      <!-- Cabecera de la tabla -->
+      <thead>
+        <tr>
+          <th>Cedula</th>
+          <th>Nombre</th>
+          <th>Fecha Alquiler</th>
+          <th>Tiempo Alquilado</th>
+          <th>Saldo</th>
+          <th>Placa</th>
+          <th>Marca</th>
+        </tr>
+      </thead>
+
+      <!-- Cuerpo de la tabla -->
+      <tbody>
+        <tr *ngFor="let alquiler of filteredAlquileres">
+          <td>{{ alquiler.cedula }}</td>
+          <td>{{ alquiler.nombre }}</td>
+          <td>{{ alquiler.fechaAlquiler | date : "dd-MM-yyyy" }}</td>
+          <td>{{ alquiler.tiempoAlquilado }}</td>
+          <td>{{ alquiler.saldo }}</td>
+          <td>{{ alquiler.placa }}</td>
+          <td>{{ alquiler.marca }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
